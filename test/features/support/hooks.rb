@@ -18,7 +18,7 @@ After do |scenario|
 end
 
 def log_sauce_scenario(session_id, scenario,status=false)
-  job_name = '*TestScraperApp* ' + "#{scenario.feature.name.delete(' ')}-#{scenario.feature.file}:#{scenario.location.lines.first}"
+  job_name = '*TestScraperApp* ' + "#{scenario.feature.file}:#{scenario.location.lines.first}"
   job = SauceWhisk::Jobs.fetch(session_id)
   job.name = job_name
   job.tags = scenario.source_tag_names

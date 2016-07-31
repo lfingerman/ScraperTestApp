@@ -4,7 +4,7 @@ Given(/^I requested to fetch all results from Scraper API$/) do
 end
 
 When(/^I open the scraping site$/) do
-  @phone_notes_app.goto('http://800notes.com/')
+  @phone_notes_app.goto('http://www.google.com/')
 end
 
 

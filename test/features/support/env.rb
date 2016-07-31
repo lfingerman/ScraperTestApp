@@ -15,7 +15,7 @@ Huzzah.define_driver(:sauce_ie) do
       internet_explorer(:platform => ENV['SELENIUM_PLATFORM'],
                         :version => ENV['SELENIUM_VERSION'],
                         :name => 'TestScraperApp',
-                        :tunnelIdentifier => 'testscraper',
+                       # :tunnelIdentifier => 'testscraper',
                         :idleTimeout => '600')
   driver = Selenium::WebDriver.for(
       :remote,
@@ -29,7 +29,7 @@ Huzzah.define_driver(:sauce_safari) do
       safari(:platform => ENV['SELENIUM_PLATFORM'],
              :version => ENV['SELENIUM_VERSION'],
              :name => 'TestScraperApp',
-             :tunnelIdentifier => 'testscraper',
+             #:tunnelIdentifier => 'testscraper',
              :idleTimeout => '600')
   driver = Selenium::WebDriver.for(
       :remote,
@@ -41,11 +41,40 @@ end
 
 
 Huzzah.define_driver(:sauce_firefox) do
+
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = 180 # seconds – default is 60
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  profile['browser.fixup.alternate.enabled'] = false
+  profile['network.dns.disablePrefetch'] = true
+  profile['network.http.connect.timeout'] = 120 # These are attempts to increase the timeout before failing to find a site
+  profile['network.http.request.timeout'] = 120 #  NOTE: they don't appear to affect our failures.
   caps = Selenium::WebDriver::Remote::Capabilities.
       firefox(:platform => ENV['SELENIUM_PLATFORM'],
               :version => ENV['SELENIUM_VERSION'],
               :name => 'TestScraperApp',
-              :tunnelIdentifier => 'testscraper',
+             # :tunnelIdentifier => 'testscraper',
+              :idleTimeout => '600')
+  profile = Selenium::WebDriver::Firefox::Profile.new
+  driver = Selenium::WebDriver.for(
+      :remote,
+      :url => sauce_grid_url,
+      :desired_capabilities => caps)
+
+
+  Watir::Browser.new(driver)
+
+
+#   375x667 iPhone 6
+end
+
+
+Huzzah.define_driver(:sauce_chrome) do
+  caps = Selenium::WebDriver::Remote::Capabilities.
+      chrome(:platform => ENV['SELENIUM_PLATFORM'],
+              :version => ENV['SELENIUM_VERSION'],
+              :name => 'TestScraperApp',
+             # :tunnelIdentifier => 'testscraper',
               :idleTimeout => '600')
   driver = Selenium::WebDriver.for(
       :remote,
