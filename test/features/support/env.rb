@@ -43,12 +43,6 @@ end
 Huzzah.define_driver(:sauce_firefox) do
 
   client = Selenium::WebDriver::Remote::Http::Default.new
-  client.timeout = 180 # seconds – default is 60
-  profile = Selenium::WebDriver::Firefox::Profile.new
-  profile['browser.fixup.alternate.enabled'] = false
-  profile['network.dns.disablePrefetch'] = true
-  profile['network.http.connect.timeout'] = 120 # These are attempts to increase the timeout before failing to find a site
-  profile['network.http.request.timeout'] = 120 #  NOTE: they don't appear to affect our failures.
   caps = Selenium::WebDriver::Remote::Capabilities.
       firefox(:platform => ENV['SELENIUM_PLATFORM'],
               :version => ENV['SELENIUM_VERSION'],
