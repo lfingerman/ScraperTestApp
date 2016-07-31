@@ -13,7 +13,7 @@ After do |scenario|
   status = (scenario.passed?) ? true : false
   if ENV['BROWSER'].downcase.include? 'sauce'
     log_sauce_scenario(session_id, scenario, status)
-    p "SauceOnDemandSessionID=#{session_id};\n job-name=#{scenario.name}; Result=#{scenario.status.to_s}"
+    p "SauceOnDemandSessionID=#{session_id};\n job-name=#{scenario.name}; Results=#{scenario.status.to_s}"
   end
 end
 
