@@ -11,3 +11,7 @@ end
 Then(/^I see values of the "([^"]*)" in API response corresponding to the scraping site$/) do |key|
   @api_response.each_with_index {|response,i| expect(response[key]).to include (@phone_notes_app.landing_page.send(key.to_sym)[i].text)}
 end
+
+Then(/^I see phone number formatted in the scraping site$/) do
+ expect(@phone_notes_app.landing_page.phone_number[0].text).to match(/\d+-\d+-\d+/)
+end
