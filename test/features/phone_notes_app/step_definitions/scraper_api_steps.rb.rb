@@ -13,5 +13,9 @@ Then(/^I see values of the "([^"]*)" in API response corresponding to the scrapi
 end
 
 Then(/^I see phone number formatted in the scraping site$/) do
- expect(@phone_notes_app.landing_page.phone_number[0].text).to match(/\d+-\d+-\d+/)
+  expect(@phone_notes_app.landing_page.phone_number[0].text).to match(/\d+-\d+-\d+/)
+end
+
+Then(/^I see area code formatted in the scraping site$/) do
+  expect(@phone_notes_app.landing_page.area_code[0].text).to match(/\d+/)
 end
