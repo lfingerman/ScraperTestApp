@@ -19,3 +19,7 @@ end
 Then(/^I see area code formatted in the scraping site$/) do
   expect(@phone_notes_app.landing_page.area_code[0].text).to match(/\d+/)
 end
+
+Then(/^I see comments in the scraping site$/) do
+  expect(@phone_notes_app.landing_page.comments[0].text).to match(/\D+/)
+end

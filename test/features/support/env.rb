@@ -54,11 +54,7 @@ Huzzah.define_driver(:sauce_firefox) do
       :remote,
       :url => sauce_grid_url,
       :desired_capabilities => caps)
-
-
   Watir::Browser.new(driver)
-
-
 #   375x667 iPhone 6
 end
 
