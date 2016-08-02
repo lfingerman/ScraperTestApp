@@ -17,7 +17,7 @@ After do |scenario|
   end
 end
 
-def log_sauce_scenario(session_id, scenario,status=false)
+def log_sauce_scenario(session_id, scenario,status=true)
   job_name = '*TestScraperApp* ' + "#{scenario.feature.file}:#{scenario.location.lines.first}"
   job = SauceWhisk::Jobs.fetch(session_id)
   job.name = job_name
