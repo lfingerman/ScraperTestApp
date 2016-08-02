@@ -51,6 +51,9 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.5.5)
     netrc (0.11.0)
+    parallel (1.9.0)
+    parallel_tests (2.7.0)
+      parallel
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -115,6 +118,7 @@ DEPENDENCIES
   hpricot
   httparty
   huzzah!
+  parallel_tests
   pry
   pry-nav
   require_all

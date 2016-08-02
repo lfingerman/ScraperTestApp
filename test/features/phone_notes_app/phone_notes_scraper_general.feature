@@ -6,10 +6,5 @@ Feature: Complete Results from Phone Notes
   Background:
     Given I open the scraping site
 
-  Scenario: Phone Notes application provides complaint phone numbers
-    Then I see phone number formatted in the scraping site
-
-
-
-
-
+  Scenario: Phone Notes application provides complaint comments
+    Then I see comments in the scraping site

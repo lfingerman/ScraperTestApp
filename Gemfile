@@ -12,4 +12,5 @@ gem 'pry'
 gem 'pry-nav'
 gem 'test-helpers'
 gem 'sauce_whisk'
+gem 'parallel_tests'
 
